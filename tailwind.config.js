@@ -6,8 +6,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#000000',
-        foreground: '#ffffff',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        card: 'var(--card)',
+        'card-foreground': 'var(--card-foreground)',
+        primary: 'var(--primary)',
+        'primary-foreground': 'var(--primary-foreground)',
+        muted: 'var(--muted)',
+        'muted-foreground': 'var(--muted-foreground)',
+        border: 'var(--border)',
+      },
+      borderRadius: {
+        sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
       },
     },
   },
