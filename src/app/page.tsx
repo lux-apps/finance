@@ -1,84 +1,133 @@
 import Link from 'next/link'
 
 const stats = [
-  { label: 'Total Value Locked', value: '$50M+' },
-  { label: 'Loans Issued', value: '$25M+' },
-  { label: 'Yield Earned', value: '$5M+' },
-  { label: 'Active Vaults', value: '10K+' },
-]
-
-const pillars = [
-  {
-    name: 'Earn',
-    description: 'Deposit into yield-generating vaults. Your assets work for you around the clock.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
-    metric: '4-25% APY',
-  },
-  {
-    name: 'Advance',
-    description: 'Borrow against your future yield. Get liquidity today, repay with tomorrow\'s earnings.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    metric: '0% Interest',
-  },
-  {
-    name: 'Stake',
-    description: 'Lock LUX for veLUX. Vote on protocol parameters, treasury allocation, and strategy approvals.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-    metric: 'Governance',
-  },
+  { label: 'Total Value Locked', value: '$0' },
+  { label: 'Total Borrowed', value: '$0' },
+  { label: 'Yield Generated', value: '$0' },
+  { label: 'Active Loans', value: '0' },
 ]
 
 const steps = [
   {
     step: '01',
-    title: 'Deposit',
-    description: 'Choose a vault and deposit your assets. They immediately begin earning yield.',
+    title: 'Bridge',
+    description: 'Bridge your assets from any supported chain to Lux Network via the cross-chain bridge.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+    ),
   },
   {
     step: '02',
-    title: 'Advance',
-    description: 'Take an advance against your future yield. Up to 50% of deposited value.',
+    title: 'Deposit',
+    description: 'Deposit your bridged collateral into Liquid Protocol vaults. Start earning yield immediately.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    ),
   },
   {
     step: '03',
+    title: 'Borrow L*',
+    description: 'Borrow L* synthetic tokens against your collateral. Up to 90% LTV in E-Mode for correlated assets.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    step: '04',
     title: 'Auto-Repay',
-    description: 'Your vault yield automatically repays the advance. No liquidations, no interest.',
+    description: 'Source chain yield automatically repays your debt over time. No manual payments required.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    ),
   },
 ]
 
-const strategies = [
+const liquidTokens = [
+  { symbol: 'LLUX', name: 'Liquid LUX', category: 'Native Lux' },
+  { symbol: 'LAI', name: 'Liquid AI', category: 'Native Lux' },
+  { symbol: 'LZOO', name: 'Liquid ZOO', category: 'Native Lux' },
+  { symbol: 'LETH', name: 'Liquid ETH', category: 'Major L1s' },
+  { symbol: 'LBTC', name: 'Liquid BTC', category: 'Major L1s' },
+  { symbol: 'LSOL', name: 'Liquid SOL', category: 'Major L1s' },
+  { symbol: 'LTON', name: 'Liquid TON', category: 'Major L1s' },
+  { symbol: 'LADA', name: 'Liquid ADA', category: 'Major L1s' },
+  { symbol: 'LAVAX', name: 'Liquid AVAX', category: 'Major L1s' },
+  { symbol: 'LBNB', name: 'Liquid BNB', category: 'Major L1s' },
+  { symbol: 'LPOL', name: 'Liquid POL', category: 'Major L1s' },
+  { symbol: 'LUSD', name: 'Liquid USD', category: 'Stablecoins' },
+]
+
+const features = [
   {
-    name: 'Stablecoin Vaults',
-    assets: 'USDC, USDT, DAI',
-    apy: '4-8%',
-    risk: 'Low',
-    description: 'Earn yield on stablecoins through battle-tested lending protocols.',
+    title: '90% LTV E-Mode',
+    description: 'Maximum capital efficiency for correlated asset pairs. Borrow up to 90% of your collateral value.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
   },
   {
-    name: 'ETH Staking',
-    assets: 'ETH, stETH, rETH',
+    title: 'No Liquidation Fear',
+    description: 'Yield-based repayment means your collateral is protected. Sleep soundly knowing your position is safe.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Yield Auto-Repay',
+    description: 'Your source chain yield flows directly to debt repayment. Loans pay themselves off automatically.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Multi-Chain Collateral',
+    description: 'Deposit assets from Ethereum, Solana, Bitcoin, and more. True cross-chain capital efficiency.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+      </svg>
+    ),
+  },
+]
+
+const yieldStrategies = [
+  {
+    name: 'ETH Staking Yield',
+    source: 'Ethereum',
     apy: '4-6%',
-    risk: 'Low',
-    description: 'Liquid staking derivatives with automated compounding.',
+    description: 'Native staking rewards from Ethereum validators flow to your debt.',
+  },
+  {
+    name: 'BTC Yield',
+    source: 'Bitcoin L2s',
+    apy: '2-5%',
+    description: 'Yield from Bitcoin DeFi protocols on Stacks, Lightning, and others.',
+  },
+  {
+    name: 'Stablecoin Yield',
+    source: 'Multiple Chains',
+    apy: '5-12%',
+    description: 'Lending yields from battle-tested protocols across chains.',
   },
   {
     name: 'LUX Staking',
-    assets: 'LUX, veLUX',
-    apy: '10-25%',
-    risk: 'Medium',
-    description: 'Stake LUX for protocol rewards and governance power.',
+    source: 'Lux Network',
+    apy: '8-15%',
+    description: 'Validator rewards and protocol incentives from Lux Network.',
   },
 ]
 
@@ -88,16 +137,16 @@ const securityFeatures = [
     description: 'Multiple independent audits by leading security firms.',
   },
   {
-    title: 'Bug Bounty',
-    description: '$500K bounty program for critical vulnerabilities.',
-  },
-  {
     title: 'Non-Custodial',
     description: 'Your keys, your assets. We never hold your funds.',
   },
   {
     title: 'Open Source',
     description: 'All contracts verified and publicly auditable.',
+  },
+  {
+    title: 'Bug Bounty',
+    description: '$500K bounty program for critical vulnerabilities.',
   },
 ]
 
@@ -111,9 +160,9 @@ export default function Page() {
             LUX FINANCE
           </Link>
           <div className="hidden md:flex gap-8 text-sm text-muted-foreground">
-            <Link href="#earn" className="hover:text-foreground transition-colors">Earn</Link>
-            <Link href="#advance" className="hover:text-foreground transition-colors">Advance</Link>
-            <Link href="#stake" className="hover:text-foreground transition-colors">Stake</Link>
+            <Link href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</Link>
+            <Link href="#tokens" className="hover:text-foreground transition-colors">L* Tokens</Link>
+            <Link href="#features" className="hover:text-foreground transition-colors">Features</Link>
             <Link href="https://docs.lux.network/finance" className="hover:text-foreground transition-colors">Docs</Link>
           </div>
           <Link
@@ -128,20 +177,23 @@ export default function Page() {
       {/* Hero */}
       <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
         <p className="text-muted-foreground text-sm tracking-widest uppercase mb-4">
-          Self-Repaying Loans
+          Liquid Protocol
         </p>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-center mb-6">
           LUX FINANCE
         </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground text-center max-w-2xl mb-12">
-          Self-repaying loans powered by yield. Borrow against your future earnings. Never pay interest.
+        <p className="text-xl md:text-2xl text-muted-foreground text-center max-w-2xl mb-4">
+          Self-repaying loans. Borrow against yield.
+        </p>
+        <p className="text-base text-muted-foreground/80 text-center max-w-xl mb-12">
+          Deposit bridged collateral, borrow L* synthetic tokens, and let source chain yield automatically repay your debt.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href="https://app.lux.finance"
             className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors"
           >
-            Start Earning
+            Launch App
           </Link>
           <Link
             href="https://docs.lux.network/finance"
@@ -166,49 +218,114 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Three Pillars */}
-      <section id="pillars" className="py-24 px-6">
+      {/* How It Works */}
+      <section id="how-it-works" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Three Pillars</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How It Works</h2>
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            A complete system for building wealth without selling your assets.
+            Four steps to unlock liquidity without selling your assets.
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.name}
-                className="bg-card border border-border backdrop-blur-sm rounded-lg p-8 hover:border-muted transition-colors"
-              >
-                <div className="w-14 h-14 rounded-lg bg-muted flex items-center justify-center mb-6 text-foreground">
-                  {pillar.icon}
+          <div className="grid md:grid-cols-4 gap-6">
+            {steps.map((item, index) => (
+              <div key={item.step} className="relative">
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-12 left-full w-full h-px bg-border -translate-x-1/2 z-0" />
+                )}
+                <div className="bg-card border border-border backdrop-blur-sm rounded-lg p-6 relative z-10">
+                  <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4 text-foreground">
+                    {item.icon}
+                  </div>
+                  <span className="text-3xl font-bold text-muted-foreground/30 mb-2 block">{item.step}</span>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{pillar.name}</h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{pillar.description}</p>
-                <p className="text-lg font-medium text-foreground">{pillar.metric}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-12 p-6 bg-muted/30 border border-border rounded-lg max-w-3xl mx-auto">
+            <p className="text-center text-muted-foreground">
+              <span className="font-medium text-foreground">Example:</span> Bridge ETH from Ethereum, deposit as collateral, borrow LETH at 90% LTV, use LETH across DeFi while ETH staking yield auto-repays your loan.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="py-24 px-6 bg-card">
+      {/* Liquid Tokens */}
+      <section id="tokens" className="py-24 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How It Works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">L* Liquid Tokens</h2>
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            Three steps to unlock liquidity without selling your assets.
+            12 liquid synthetic tokens at launch. Borrow L* tokens against your bridged collateral.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((item, index) => (
-              <div key={item.step} className="relative">
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-px bg-border -translate-x-1/2" />
-                )}
-                <div className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-8">
-                  <span className="text-4xl font-bold text-muted-foreground/30 mb-4 block">{item.step}</span>
-                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+
+          {/* Native Lux */}
+          <div className="mb-8">
+            <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">Native Lux</h3>
+            <div className="grid grid-cols-3 gap-4">
+              {liquidTokens.filter(t => t.category === 'Native Lux').map((token) => (
+                <div
+                  key={token.symbol}
+                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-4 hover:border-muted-foreground/50 transition-colors"
+                >
+                  <p className="text-lg font-bold">{token.symbol}</p>
+                  <p className="text-sm text-muted-foreground">{token.name}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Major L1s */}
+          <div className="mb-8">
+            <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">Major L1s</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {liquidTokens.filter(t => t.category === 'Major L1s').map((token) => (
+                <div
+                  key={token.symbol}
+                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-4 hover:border-muted-foreground/50 transition-colors"
+                >
+                  <p className="text-lg font-bold">{token.symbol}</p>
+                  <p className="text-sm text-muted-foreground">{token.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Stablecoins */}
+          <div>
+            <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">Stablecoins</h3>
+            <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
+              {liquidTokens.filter(t => t.category === 'Stablecoins').map((token) => (
+                <div
+                  key={token.symbol}
+                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-4 hover:border-muted-foreground/50 transition-colors"
+                >
+                  <p className="text-lg font-bold">{token.symbol}</p>
+                  <p className="text-sm text-muted-foreground">{token.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Key Features</h2>
+          <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+            Capital efficient borrowing with minimal liquidation risk.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="bg-card border border-border backdrop-blur-sm rounded-lg p-6 hover:border-muted-foreground/50 transition-colors"
+              >
+                <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4 text-foreground">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -216,90 +333,26 @@ export default function Page() {
       </section>
 
       {/* Yield Strategies */}
-      <section id="earn" className="py-24 px-6">
+      <section id="yield" className="py-24 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Yield Strategies</h2>
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            Choose from battle-tested strategies across risk profiles.
+            Source chain yield flows directly to debt repayment.
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {strategies.map((strategy) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {yieldStrategies.map((strategy) => (
               <div
                 key={strategy.name}
-                className="bg-card border border-border backdrop-blur-sm rounded-lg p-8 hover:border-muted transition-colors"
+                className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-6"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold">{strategy.name}</h3>
-                  <span className="text-sm text-muted-foreground px-2 py-1 bg-muted rounded">{strategy.risk}</span>
-                </div>
-                <p className="text-muted-foreground mb-4">{strategy.description}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <span className="text-sm text-muted-foreground">{strategy.assets}</span>
+                  <span className="text-xs text-muted-foreground px-2 py-1 bg-muted rounded">{strategy.source}</span>
                   <span className="text-lg font-bold text-foreground">{strategy.apy}</span>
                 </div>
+                <h3 className="text-lg font-bold mb-2">{strategy.name}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{strategy.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Governance */}
-      <section id="stake" className="py-24 px-6 bg-card">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">veLUX Governance</h2>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Lock LUX tokens to receive veLUX, your voting power in the protocol. Direct treasury allocation, approve new yield strategies, and set risk parameters.
-              </p>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 mt-0.5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Vote on new vault strategies
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 mt-0.5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Direct protocol treasury allocation
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 mt-0.5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Set collateral and advance ratios
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 mt-0.5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Earn protocol revenue share
-                </li>
-              </ul>
-            </div>
-            <div className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-8">
-              <h3 className="text-xl font-bold mb-6">Lock LUX for veLUX</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Lock Duration</span>
-                  <span className="font-medium">1 week - 4 years</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Max Boost</span>
-                  <span className="font-medium">4x voting power</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Revenue Share</span>
-                  <span className="font-medium">50% of fees</span>
-                </div>
-                <div className="flex justify-between py-3">
-                  <span className="text-muted-foreground">Current APY</span>
-                  <span className="font-bold text-foreground">12-25%</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -333,9 +386,9 @@ export default function Page() {
       {/* CTA */}
       <section className="py-24 px-6 bg-card">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Building Wealth</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Earning</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Deposit your assets. Earn yield. Borrow against your future earnings. No liquidations, no interest.
+            Deposit your bridged collateral. Borrow L* tokens. Let yield auto-repay your debt.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
@@ -345,10 +398,10 @@ export default function Page() {
               Launch App
             </Link>
             <Link
-              href="https://discord.gg/luxnetwork"
+              href="https://bridge.lux.network"
               className="px-8 py-4 bg-muted border border-border backdrop-blur-sm font-medium rounded hover:bg-muted/80 transition-colors"
             >
-              Join Discord
+              Bridge Assets
             </Link>
           </div>
         </div>

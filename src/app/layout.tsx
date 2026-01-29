@@ -6,9 +6,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'LUX Finance - Self-Repaying Loans Powered by Yield',
-  description: 'Borrow against your future yield with self-repaying loans. Deposit assets, earn yield, and unlock liquidity without selling. No interest, no liquidations.',
-  keywords: ['DeFi', 'self-repaying loans', 'yield farming', 'lending', 'borrowing', 'crypto', 'LUX', 'veLUX', 'governance'],
+  title: 'LUX Finance - Liquid Protocol | Self-Repaying Loans',
+  description: 'Liquid Protocol: Self-repaying loans powered by yield. Deposit bridged collateral, borrow L* synthetic tokens, and let source chain yield auto-repay your debt. 90% LTV E-Mode.',
+  keywords: ['DeFi', 'self-repaying loans', 'Liquid Protocol', 'L* tokens', 'LETH', 'LBTC', 'LUSD', 'yield', 'lending', 'borrowing', 'cross-chain', 'LUX'],
   authors: [{ name: 'Lux Partners' }],
   creator: 'Lux Partners',
   publisher: 'Lux Partners',
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'LUX Finance - Self-Repaying Loans Powered by Yield',
-    description: 'Borrow against your future yield with self-repaying loans. No interest, no liquidations.',
+    title: 'LUX Finance - Liquid Protocol | Self-Repaying Loans',
+    description: 'Self-repaying loans. Borrow against yield. Deposit bridged collateral, borrow L* tokens, auto-repay with source chain yield.',
     url: 'https://lux.finance',
     siteName: 'LUX Finance',
     locale: 'en_US',
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'LUX Finance - Self-Repaying Loans',
+        alt: 'LUX Finance - Liquid Protocol',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LUX Finance - Self-Repaying Loans Powered by Yield',
-    description: 'Borrow against your future yield with self-repaying loans. No interest, no liquidations.',
+    title: 'LUX Finance - Liquid Protocol | Self-Repaying Loans',
+    description: 'Self-repaying loans. Borrow against yield. Deposit bridged collateral, borrow L* tokens, auto-repay with source chain yield.',
     creator: '@luxfi',
     images: ['/og-image.png'],
   },
