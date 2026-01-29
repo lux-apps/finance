@@ -1,38 +1,4 @@
-'use client'
-
-import React from 'react'
 import Link from 'next/link'
-
-const pillars = [
-  {
-    name: 'Earn',
-    description: 'Deposit into compliant yield strategies with transparent risk bands',
-    icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
-    color: 'from-green-500 to-emerald-600',
-    apy: '4-25%',
-  },
-  {
-    name: 'Advance',
-    description: 'Unlock liquidity against future yield. Your vault yield repays the balance over time.',
-    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-    color: 'from-blue-500 to-cyan-600',
-    apy: '0% Interest',
-  },
-  {
-    name: 'Stake',
-    description: 'Govern treasury allocation, risk parameters, and ecosystem funding via veLUX',
-    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-    color: 'from-purple-500 to-indigo-600',
-    apy: 'Governance',
-  },
-]
-
-const features = [
-  { title: 'Self-Repaying Loans', description: 'Advances repay automatically from yield. Never liquidated, never pay interest.' },
-  { title: 'Non-Custodial', description: 'Your assets stay in your wallet. Smart contracts handle the rest.' },
-  { title: 'Multi-Chain', description: 'Earn and advance across Lux, Ethereum, Arbitrum, Base, and more.' },
-  { title: 'Audited', description: 'Multiple security audits by leading firms. Bug bounty program active.' },
-]
 
 const stats = [
   { label: 'Total Value Locked', value: '$50M+' },
@@ -41,62 +7,158 @@ const stats = [
   { label: 'Active Vaults', value: '10K+' },
 ]
 
+const pillars = [
+  {
+    name: 'Earn',
+    description: 'Deposit into yield-generating vaults. Your assets work for you around the clock.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+    metric: '4-25% APY',
+  },
+  {
+    name: 'Advance',
+    description: 'Borrow against your future yield. Get liquidity today, repay with tomorrow\'s earnings.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    metric: '0% Interest',
+  },
+  {
+    name: 'Stake',
+    description: 'Lock LUX for veLUX. Vote on protocol parameters, treasury allocation, and strategy approvals.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    metric: 'Governance',
+  },
+]
+
+const steps = [
+  {
+    step: '01',
+    title: 'Deposit',
+    description: 'Choose a vault and deposit your assets. They immediately begin earning yield.',
+  },
+  {
+    step: '02',
+    title: 'Advance',
+    description: 'Take an advance against your future yield. Up to 50% of deposited value.',
+  },
+  {
+    step: '03',
+    title: 'Auto-Repay',
+    description: 'Your vault yield automatically repays the advance. No liquidations, no interest.',
+  },
+]
+
+const strategies = [
+  {
+    name: 'Stablecoin Vaults',
+    assets: 'USDC, USDT, DAI',
+    apy: '4-8%',
+    risk: 'Low',
+    description: 'Earn yield on stablecoins through battle-tested lending protocols.',
+  },
+  {
+    name: 'ETH Staking',
+    assets: 'ETH, stETH, rETH',
+    apy: '4-6%',
+    risk: 'Low',
+    description: 'Liquid staking derivatives with automated compounding.',
+  },
+  {
+    name: 'LUX Staking',
+    assets: 'LUX, veLUX',
+    apy: '10-25%',
+    risk: 'Medium',
+    description: 'Stake LUX for protocol rewards and governance power.',
+  },
+]
+
+const securityFeatures = [
+  {
+    title: 'Audited Contracts',
+    description: 'Multiple independent audits by leading security firms.',
+  },
+  {
+    title: 'Bug Bounty',
+    description: '$500K bounty program for critical vulnerabilities.',
+  },
+  {
+    title: 'Non-Custodial',
+    description: 'Your keys, your assets. We never hold your funds.',
+  },
+  {
+    title: 'Open Source',
+    description: 'All contracts verified and publicly auditable.',
+  },
+]
+
 export default function Page() {
   return (
-    <main className="min-h-screen bg-black text-white font-sans">
+    <main className="min-h-screen bg-black text-white">
       {/* Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold tracking-wider">
-            LUX
+            LUX FINANCE
           </Link>
-          <div className="flex gap-6 text-sm">
-            <Link href="https://lux.network" className="hover:text-gray-300 transition-colors">Network</Link>
-            <Link href="https://app.lux.finance" className="hover:text-gray-300 transition-colors">App</Link>
-            <Link href="https://docs.lux.network/finance" className="hover:text-gray-300 transition-colors">Docs</Link>
+          <div className="hidden md:flex gap-8 text-sm text-gray-400">
+            <Link href="#earn" className="hover:text-white transition-colors">Earn</Link>
+            <Link href="#advance" className="hover:text-white transition-colors">Advance</Link>
+            <Link href="#stake" className="hover:text-white transition-colors">Stake</Link>
+            <Link href="https://docs.lux.network/finance" className="hover:text-white transition-colors">Docs</Link>
           </div>
+          <Link
+            href="https://app.lux.finance"
+            className="px-4 py-2 bg-white text-black text-sm font-medium rounded hover:bg-gray-200 transition-colors"
+          >
+            Launch App
+          </Link>
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 text-center">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-8">
-          <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-          </svg>
-        </div>
-        <p className="text-base text-gray-400 mb-4">
-          Self-repaying loans powered by yield
+      {/* Hero */}
+      <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
+        <p className="text-gray-400 text-sm tracking-widest uppercase mb-4">
+          Self-Repaying Loans
         </p>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-center mb-6">
           LUX FINANCE
         </h1>
-        <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl">
-          Build wealth. Fund public goods. Prove every dollar.
+        <p className="text-xl md:text-2xl text-gray-400 text-center max-w-2xl mb-12">
+          Self-repaying loans powered by yield. Borrow against your future earnings. Never pay interest.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href="https://app.lux.finance"
-            className="px-8 py-3 bg-white text-black rounded-md hover:bg-gray-200 transition-colors font-medium"
+            className="px-8 py-4 bg-white text-black font-medium rounded hover:bg-gray-200 transition-colors"
           >
-            Launch App
+            Start Earning
           </Link>
           <Link
             href="https://docs.lux.network/finance"
-            className="px-8 py-3 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors border border-white/10"
+            className="px-8 py-4 bg-white/5 border border-white/10 backdrop-blur-sm font-medium rounded hover:bg-white/10 transition-colors"
           >
-            Documentation
+            Read the Docs
           </Link>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 px-6 border-y border-white/10">
+      {/* Stats Bar */}
+      <section className="py-12 px-6 border-y border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">{stat.value}</p>
+                <p className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</p>
                 <p className="text-gray-400 text-sm">{stat.label}</p>
               </div>
             ))}
@@ -105,26 +167,24 @@ export default function Page() {
       </section>
 
       {/* Three Pillars */}
-      <section className="py-24 px-6 bg-gray-900/50">
+      <section id="pillars" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Three Pillars</h2>
           <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-            Earn yield. Unlock liquidity. Govern the protocol.
+            A complete system for building wealth without selling your assets.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {pillars.map((pillar) => (
               <div
                 key={pillar.name}
-                className="bg-black/50 border border-white/10 rounded-xl p-8 hover:border-white/20 transition-colors"
+                className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg p-8 hover:border-white/20 transition-colors"
               >
-                <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${pillar.color} flex items-center justify-center mb-6`}>
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={pillar.icon} />
-                  </svg>
+                <div className="w-14 h-14 rounded-lg bg-white/10 flex items-center justify-center mb-6 text-white">
+                  {pillar.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-3">{pillar.name}</h3>
-                <p className="text-gray-400 mb-4">{pillar.description}</p>
-                <p className="text-lg font-medium text-blue-400">{pillar.apy}</p>
+                <p className="text-gray-400 mb-4 leading-relaxed">{pillar.description}</p>
+                <p className="text-lg font-medium text-white">{pillar.metric}</p>
               </div>
             ))}
           </div>
@@ -132,48 +192,137 @@ export default function Page() {
       </section>
 
       {/* How It Works */}
-      <section className="py-24 px-6">
+      <section id="how-it-works" className="py-24 px-6 bg-white/5">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">How It Works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How It Works</h2>
+          <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+            Three steps to unlock liquidity without selling your assets.
+          </p>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-green-400">1</span>
+            {steps.map((item, index) => (
+              <div key={item.step} className="relative">
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-8 left-full w-full h-px bg-white/10 -translate-x-1/2" />
+                )}
+                <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg p-8">
+                  <span className="text-4xl font-bold text-white/20 mb-4 block">{item.step}</span>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{item.description}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">Deposit</h3>
-              <p className="text-gray-400">Deposit assets into yield-bearing vaults. Earn yield on your collateral automatically.</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Yield Strategies */}
+      <section id="earn" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Yield Strategies</h2>
+          <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+            Choose from battle-tested strategies across risk profiles.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {strategies.map((strategy) => (
+              <div
+                key={strategy.name}
+                className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg p-8 hover:border-white/20 transition-colors"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold">{strategy.name}</h3>
+                  <span className="text-sm text-gray-400 px-2 py-1 bg-white/5 rounded">{strategy.risk}</span>
+                </div>
+                <p className="text-gray-400 mb-4">{strategy.description}</p>
+                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                  <span className="text-sm text-gray-400">{strategy.assets}</span>
+                  <span className="text-lg font-bold text-white">{strategy.apy}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Governance */}
+      <section id="stake" className="py-24 px-6 bg-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">veLUX Governance</h2>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Lock LUX tokens to receive veLUX, your voting power in the protocol. Direct treasury allocation, approve new yield strategies, and set risk parameters.
+              </p>
+              <ul className="space-y-4 text-gray-400">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 mt-0.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Vote on new vault strategies
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 mt-0.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Direct protocol treasury allocation
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 mt-0.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Set collateral and advance ratios
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 mt-0.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Earn protocol revenue share
+                </li>
+              </ul>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-blue-400">2</span>
+            <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg p-8">
+              <h3 className="text-xl font-bold mb-6">Lock LUX for veLUX</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between py-3 border-b border-white/10">
+                  <span className="text-gray-400">Lock Duration</span>
+                  <span className="font-medium">1 week - 4 years</span>
+                </div>
+                <div className="flex justify-between py-3 border-b border-white/10">
+                  <span className="text-gray-400">Max Boost</span>
+                  <span className="font-medium">4x voting power</span>
+                </div>
+                <div className="flex justify-between py-3 border-b border-white/10">
+                  <span className="text-gray-400">Revenue Share</span>
+                  <span className="font-medium">50% of fees</span>
+                </div>
+                <div className="flex justify-between py-3">
+                  <span className="text-gray-400">Current APY</span>
+                  <span className="font-bold text-white">12-25%</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">Advance</h3>
-              <p className="text-gray-400">Take an advance against your future yield. Get liquidity today without selling.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-purple-400">3</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Auto-Repay</h3>
-              <p className="text-gray-400">Your vault yield automatically repays the advance. No liquidations, no interest.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-24 px-6 bg-gray-900/50">
+      {/* Security */}
+      <section id="security" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Why LUX Finance?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature) => (
-              <div key={feature.title} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Security First</h2>
+          <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+            Your assets are protected by battle-tested infrastructure.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {securityFeatures.map((feature) => (
+              <div
+                key={feature.title}
+                className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-lg p-6 text-center"
+              >
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-3">{feature.title}</h3>
+                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
                 <p className="text-gray-400 text-sm">{feature.description}</p>
               </div>
             ))}
@@ -182,33 +331,72 @@ export default function Page() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-gradient-to-b from-gray-900/50 to-black">
+      <section className="py-24 px-6 bg-white/5">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Earn?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Building Wealth</h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Deposit your assets and start earning yield today.
-            Unlock liquidity without selling. Build wealth on your terms.
+            Deposit your assets. Earn yield. Borrow against your future earnings. No liquidations, no interest.
           </p>
-          <Link
-            href="https://app.lux.finance"
-            className="inline-block px-8 py-4 bg-white text-black rounded-md hover:bg-gray-200 transition-colors font-medium"
-          >
-            Launch App
-          </Link>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="https://app.lux.finance"
+              className="px-8 py-4 bg-white text-black font-medium rounded hover:bg-gray-200 transition-colors"
+            >
+              Launch App
+            </Link>
+            <Link
+              href="https://discord.gg/luxnetwork"
+              className="px-8 py-4 bg-white/5 border border-white/10 backdrop-blur-sm font-medium rounded hover:bg-white/10 transition-colors"
+            >
+              Join Discord
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Lux Finance. All rights reserved.
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="font-bold mb-4">LUX FINANCE</h4>
+              <p className="text-gray-400 text-sm">
+                Self-repaying loans powered by yield.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Protocol</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="https://app.lux.finance" className="hover:text-white transition-colors">App</Link></li>
+                <li><Link href="https://docs.lux.network/finance" className="hover:text-white transition-colors">Docs</Link></li>
+                <li><Link href="https://github.com/luxfi/finance" className="hover:text-white transition-colors">GitHub</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Ecosystem</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="https://lux.network" className="hover:text-white transition-colors">Lux Network</Link></li>
+                <li><Link href="https://lux.exchange" className="hover:text-white transition-colors">Exchange</Link></li>
+                <li><Link href="https://bridge.lux.network" className="hover:text-white transition-colors">Bridge</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Community</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><Link href="https://discord.gg/luxnetwork" className="hover:text-white transition-colors">Discord</Link></li>
+                <li><Link href="https://twitter.com/luxfi" className="hover:text-white transition-colors">Twitter</Link></li>
+                <li><Link href="https://t.me/luxfi" className="hover:text-white transition-colors">Telegram</Link></li>
+              </ul>
+            </div>
           </div>
-          <div className="flex gap-6 text-sm text-gray-400">
-            <Link href="https://lux.network" className="hover:text-white transition-colors">Network</Link>
-            <Link href="https://lux.credit" className="hover:text-white transition-colors">Credit</Link>
-            <Link href="https://lux.exchange" className="hover:text-white transition-colors">Exchange</Link>
-            <Link href="https://lux.fund" className="hover:text-white transition-colors">Fund</Link>
+          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-gray-400">
+              &copy; {new Date().getFullYear()} Lux Partners. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-sm text-gray-400">
+              <Link href="https://lux.network/terms" className="hover:text-white transition-colors">Terms</Link>
+              <Link href="https://lux.network/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            </div>
           </div>
         </div>
       </footer>
