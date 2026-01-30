@@ -163,6 +163,7 @@ export default function Page() {
             <Link href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</Link>
             <Link href="#tokens" className="hover:text-foreground transition-colors">L* Tokens</Link>
             <Link href="#features" className="hover:text-foreground transition-colors">Features</Link>
+            <Link href="/bank" className="hover:text-foreground transition-colors">Bank</Link>
             <Link href="https://docs.lux.network/finance" className="hover:text-foreground transition-colors">Docs</Link>
           </div>
           <Link
