@@ -168,7 +168,7 @@ export default function Page() {
           </div>
           <Link
             href="https://app.lux.finance"
-            className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded hover:bg-primary/90 transition-colors"
+            className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-xl hover:bg-primary/90 transition-colors"
           >
             Launch App
           </Link>
@@ -192,13 +192,13 @@ export default function Page() {
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href="https://app.lux.finance"
-            className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors"
+            className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
           >
             Launch App
           </Link>
           <Link
             href="https://docs.lux.network/finance"
-            className="px-8 py-4 bg-card border border-border backdrop-blur-sm font-medium rounded hover:bg-muted transition-colors"
+            className="px-8 py-4 bg-card border border-border backdrop-blur-sm font-medium rounded-xl hover:bg-muted transition-colors"
           >
             Read the Docs
           </Link>
@@ -232,8 +232,8 @@ export default function Page() {
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-12 left-full w-full h-px bg-border -translate-x-1/2 z-0" />
                 )}
-                <div className="bg-card border border-border backdrop-blur-sm rounded-lg p-6 relative z-10">
-                  <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4 text-foreground">
+                <div className="bg-card border border-border backdrop-blur-sm rounded-xl p-6 relative z-10">
+                  <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 text-foreground">
                     {item.icon}
                   </div>
                   <span className="text-3xl font-bold text-muted-foreground/30 mb-2 block">{item.step}</span>
@@ -243,7 +243,7 @@ export default function Page() {
               </div>
             ))}
           </div>
-          <div className="mt-12 p-6 bg-muted/30 border border-border rounded-lg max-w-3xl mx-auto">
+          <div className="mt-12 p-6 bg-muted/30 border border-border rounded-xl max-w-3xl mx-auto">
             <p className="text-center text-muted-foreground">
               <span className="font-medium text-foreground">Example:</span> Bridge ETH from Ethereum, deposit as collateral, borrow LETH at 90% LTV, use LETH across DeFi while ETH staking yield auto-repays your loan.
             </p>
@@ -266,7 +266,7 @@ export default function Page() {
               {liquidTokens.filter(t => t.category === 'Native Lux').map((token) => (
                 <div
                   key={token.symbol}
-                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-4 hover:border-muted-foreground/50 transition-colors"
+                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-4 hover:border-muted-foreground/50 transition-colors"
                 >
                   <p className="text-lg font-bold">{token.symbol}</p>
                   <p className="text-sm text-muted-foreground">{token.name}</p>
@@ -282,7 +282,7 @@ export default function Page() {
               {liquidTokens.filter(t => t.category === 'Major L1s').map((token) => (
                 <div
                   key={token.symbol}
-                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-4 hover:border-muted-foreground/50 transition-colors"
+                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-4 hover:border-muted-foreground/50 transition-colors"
                 >
                   <p className="text-lg font-bold">{token.symbol}</p>
                   <p className="text-sm text-muted-foreground">{token.name}</p>
@@ -298,7 +298,7 @@ export default function Page() {
               {liquidTokens.filter(t => t.category === 'Stablecoins').map((token) => (
                 <div
                   key={token.symbol}
-                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-4 hover:border-muted-foreground/50 transition-colors"
+                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-4 hover:border-muted-foreground/50 transition-colors"
                 >
                   <p className="text-lg font-bold">{token.symbol}</p>
                   <p className="text-sm text-muted-foreground">{token.name}</p>
@@ -320,9 +320,9 @@ export default function Page() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-card border border-border backdrop-blur-sm rounded-lg p-6 hover:border-muted-foreground/50 transition-colors"
+                className="bg-card border border-border backdrop-blur-sm rounded-xl p-6 hover:border-muted-foreground/50 transition-colors"
               >
-                <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4 text-foreground">
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 text-foreground">
                   {feature.icon}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
@@ -344,7 +344,7 @@ export default function Page() {
             {yieldStrategies.map((strategy) => (
               <div
                 key={strategy.name}
-                className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-6"
+                className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-6"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs text-muted-foreground px-2 py-1 bg-muted rounded">{strategy.source}</span>
@@ -369,7 +369,7 @@ export default function Page() {
             {securityFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-card border border-border backdrop-blur-sm rounded-lg p-6 text-center"
+                className="bg-card border border-border backdrop-blur-sm rounded-xl p-6 text-center"
               >
                 <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                   <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -394,13 +394,13 @@ export default function Page() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="https://app.lux.finance"
-              className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors"
+              className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
             >
               Launch App
             </Link>
             <Link
               href="https://bridge.lux.network"
-              className="px-8 py-4 bg-muted border border-border backdrop-blur-sm font-medium rounded hover:bg-muted/80 transition-colors"
+              className="px-8 py-4 bg-muted border border-border backdrop-blur-sm font-medium rounded-xl hover:bg-muted/80 transition-colors"
             >
               Bridge Assets
             </Link>

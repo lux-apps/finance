@@ -114,7 +114,7 @@ export default function BankPage() {
           </div>
           <Link
             href="https://app.lux.finance/bank"
-            className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded hover:bg-primary/90 transition-colors"
+            className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-xl hover:bg-primary/90 transition-colors"
           >
             Open Account
           </Link>
@@ -138,13 +138,13 @@ export default function BankPage() {
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href="https://app.lux.finance/bank"
-            className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors"
+            className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
           >
             Open Account
           </Link>
           <Link
             href="#accounts"
-            className="px-8 py-4 bg-card border border-border backdrop-blur-sm font-medium rounded hover:bg-muted transition-colors"
+            className="px-8 py-4 bg-card border border-border backdrop-blur-sm font-medium rounded-xl hover:bg-muted transition-colors"
           >
             View Accounts
           </Link>
@@ -158,9 +158,9 @@ export default function BankPage() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-card border border-border backdrop-blur-sm rounded-lg p-6"
+                className="bg-card border border-border backdrop-blur-sm rounded-xl p-6"
               >
-                <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4 text-foreground">
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 text-foreground">
                   {feature.icon}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
@@ -182,7 +182,7 @@ export default function BankPage() {
             {accountTypes.map((account) => (
               <div
                 key={account.name}
-                className="bg-muted/50 border border-border backdrop-blur-sm rounded-lg p-6"
+                className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-6"
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold">{account.name}</h3>
@@ -201,7 +201,7 @@ export default function BankPage() {
                 </ul>
                 <Link
                   href="https://app.lux.finance/bank"
-                  className="mt-6 block w-full text-center px-4 py-3 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors"
+                  className="mt-6 block w-full text-center px-4 py-3 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
                 >
                   Open {account.name}
                 </Link>
@@ -222,7 +222,7 @@ export default function BankPage() {
             {cards.map((card) => (
               <div
                 key={card.tier}
-                className="bg-card border border-border backdrop-blur-sm rounded-lg overflow-hidden"
+                className="bg-card border border-border backdrop-blur-sm rounded-xl overflow-hidden"
               >
                 {/* Card Visual */}
                 <div className={`${card.color} p-6 aspect-[1.6/1] flex flex-col justify-between`}>
@@ -297,13 +297,13 @@ export default function BankPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="https://app.lux.finance/bank"
-              className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded hover:bg-primary/90 transition-colors"
+              className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
             >
               Open Account
             </Link>
             <Link
               href="/"
-              className="px-8 py-4 bg-muted border border-border backdrop-blur-sm font-medium rounded hover:bg-muted/80 transition-colors"
+              className="px-8 py-4 bg-muted border border-border backdrop-blur-sm font-medium rounded-xl hover:bg-muted/80 transition-colors"
             >
               Explore Finance
             </Link>
