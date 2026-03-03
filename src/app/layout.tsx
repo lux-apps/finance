@@ -6,8 +6,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'LUX Finance - Liquid Protocol | Self-Repaying Loans',
-  description: 'Liquid Protocol: Self-repaying loans powered by yield. Deposit bridged collateral, borrow L* synthetic tokens, and let source chain yield auto-repay your debt. 90% LTV E-Mode.',
-  keywords: ['DeFi', 'self-repaying loans', 'Liquid Protocol', 'L* tokens', 'LETH', 'LBTC', 'LUSD', 'yield', 'lending', 'borrowing', 'cross-chain', 'LUX'],
+  description: 'Liquid Protocol V3: Self-repaying loans powered by MYT yield strategies. Deposit yield-bearing collateral, borrow x* multiplied tokens, and let yield auto-repay your debt. 90% LTV.',
+  keywords: ['DeFi', 'self-repaying loans', 'Liquid Protocol', 'x* tokens', 'xETH', 'xUSD', 'xLUX', 'xZOO', 'xAI', 'xPARS', 'MYT', 'yield', 'lending', 'borrowing', 'multi-chain', 'LUX'],
   authors: [{ name: 'Lux Partners' }],
   creator: 'Lux Partners',
   publisher: 'Lux Partners',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'LUX Finance - Liquid Protocol | Self-Repaying Loans',
-    description: 'Self-repaying loans. Borrow against yield. Deposit bridged collateral, borrow L* tokens, auto-repay with source chain yield.',
+    description: 'Self-repaying loans. Borrow x* multiplied tokens against yield-bearing collateral. MYT strategies auto-repay your debt.',
     url: 'https://lux.finance',
     siteName: 'LUX Finance',
     locale: 'en_US',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'LUX Finance - Liquid Protocol | Self-Repaying Loans',
-    description: 'Self-repaying loans. Borrow against yield. Deposit bridged collateral, borrow L* tokens, auto-repay with source chain yield.',
+    description: 'Self-repaying loans. Borrow x* multiplied tokens against yield-bearing collateral. MYT strategies auto-repay your debt.',
     creator: '@luxfi',
     images: ['/og-image.png'],
   },

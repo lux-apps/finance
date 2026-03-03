@@ -113,7 +113,7 @@ export default function BankPage() {
             <Link href="/" className="hover:text-foreground transition-colors">Finance</Link>
           </div>
           <Link
-            href="https://app.lux.finance/bank"
+            href="https://app.lux.financial"
             className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-xl hover:bg-primary/90 transition-colors"
           >
             Open Account
@@ -137,7 +137,7 @@ export default function BankPage() {
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
-            href="https://app.lux.finance/bank"
+            href="https://app.lux.financial"
             className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
           >
             Open Account
@@ -200,7 +200,7 @@ export default function BankPage() {
                   ))}
                 </ul>
                 <Link
-                  href="https://app.lux.finance/bank"
+                  href="https://app.lux.financial"
                   className="mt-6 block w-full text-center px-4 py-3 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
                 >
                   Open {account.name}
@@ -296,7 +296,7 @@ export default function BankPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="https://app.lux.finance/bank"
+              href="https://app.lux.financial"
               className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded-xl hover:bg-primary/90 transition-colors"
             >
               Open Account

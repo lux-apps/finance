@@ -3,25 +3,15 @@ import Link from 'next/link'
 const stats = [
   { label: 'Total Value Locked', value: '$0' },
   { label: 'Total Borrowed', value: '$0' },
-  { label: 'Yield Generated', value: '$0' },
-  { label: 'Active Loans', value: '0' },
+  { label: 'Active Positions', value: '0' },
+  { label: 'Networks', value: '4' },
 ]
 
 const steps = [
   {
     step: '01',
-    title: 'Bridge',
-    description: 'Bridge your assets from any supported chain to Lux Network via the cross-chain bridge.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-      </svg>
-    ),
-  },
-  {
-    step: '02',
     title: 'Deposit',
-    description: 'Deposit your bridged collateral into Liquid Protocol vaults. Start earning yield immediately.',
+    description: 'Deposit yield-bearing collateral — wstETH, rETH, USDC, stLUX, and more — into Liquid Protocol vaults.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -29,9 +19,9 @@ const steps = [
     ),
   },
   {
-    step: '03',
-    title: 'Borrow L*',
-    description: 'Borrow L* synthetic tokens against your collateral. Up to 90% LTV in E-Mode for correlated assets.',
+    step: '02',
+    title: 'Borrow x*',
+    description: 'Borrow multiplied tokens (xETH, xUSD, xLUX, xZOO, xAI, xPARS) up to 90% LTV against your collateral.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -39,36 +29,105 @@ const steps = [
     ),
   },
   {
-    step: '04',
-    title: 'Auto-Repay',
-    description: 'Source chain yield automatically repays your debt over time. No manual payments required.',
+    step: '03',
+    title: 'Yield Flows',
+    description: 'MYT (Mix-Yield Token) strategies auto-allocate collateral yield across protocols to repay your debt.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
       </svg>
     ),
   },
+  {
+    step: '04',
+    title: 'Transmute',
+    description: 'Convert x* tokens back to underlying assets via the 90-day transmuter. Fixed duration, predictable redemption.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+    ),
+  },
 ]
 
-const liquidTokens = [
-  { symbol: 'LLUX', name: 'Liquid LUX', category: 'Native Lux' },
-  { symbol: 'LAI', name: 'Liquid AI', category: 'Native Lux' },
-  { symbol: 'LZOO', name: 'Liquid ZOO', category: 'Native Lux' },
-  { symbol: 'LETH', name: 'Liquid ETH', category: 'Major L1s' },
-  { symbol: 'LBTC', name: 'Liquid BTC', category: 'Major L1s' },
-  { symbol: 'LSOL', name: 'Liquid SOL', category: 'Major L1s' },
-  { symbol: 'LTON', name: 'Liquid TON', category: 'Major L1s' },
-  { symbol: 'LADA', name: 'Liquid ADA', category: 'Major L1s' },
-  { symbol: 'LAVAX', name: 'Liquid AVAX', category: 'Major L1s' },
-  { symbol: 'LBNB', name: 'Liquid BNB', category: 'Major L1s' },
-  { symbol: 'LPOL', name: 'Liquid POL', category: 'Major L1s' },
-  { symbol: 'LUSD', name: 'Liquid USD', category: 'Stablecoins' },
+const tokenGroups = [
+  {
+    network: 'Lux Network',
+    tokens: [
+      { symbol: 'xLUX', name: 'Multiplied LUX', underlying: 'WLUX' },
+      { symbol: 'xETH', name: 'Multiplied ETH', underlying: 'WETH' },
+      { symbol: 'xUSD', name: 'Multiplied USD', underlying: 'USDC' },
+    ],
+  },
+  {
+    network: 'Zoo Network',
+    tokens: [
+      { symbol: 'xZOO', name: 'Multiplied ZOO', underlying: 'WZOO' },
+    ],
+  },
+  {
+    network: 'Hanzo Network',
+    tokens: [
+      { symbol: 'xAI', name: 'Multiplied AI', underlying: 'WHANZO' },
+    ],
+  },
+  {
+    network: 'Pars Network',
+    tokens: [
+      { symbol: 'xPARS', name: 'Multiplied PARS', underlying: 'WPARS' },
+    ],
+  },
+]
+
+const mytStrategies = [
+  {
+    vault: 'xETH Vault',
+    strategies: [
+      { name: 'Lido wstETH', apy: '4%', risk: 'Conservative' },
+      { name: 'Rocket Pool rETH', apy: '3.5%', risk: 'Conservative' },
+      { name: 'Frax sfrxETH', apy: '5%', risk: 'Moderate' },
+      { name: 'EigenLayer eETH', apy: '6%', risk: 'Moderate' },
+      { name: 'Tokemak tokeETH', apy: '8%', risk: 'Aggressive' },
+    ],
+  },
+  {
+    vault: 'xUSD Vault',
+    strategies: [
+      { name: 'AAVE aUSDC', apy: '3%', risk: 'Conservative' },
+      { name: 'Yearn yvUSDC', apy: '5%', risk: 'Moderate' },
+      { name: 'Morpho mUSDC', apy: '6%', risk: 'Moderate' },
+    ],
+  },
+  {
+    vault: 'xLUX Vault',
+    strategies: [
+      { name: 'Lux staking stLUX', apy: '5%', risk: 'Conservative' },
+    ],
+  },
+  {
+    vault: 'xZOO Vault',
+    strategies: [
+      { name: 'Zoo staking stZOO', apy: '8%', risk: 'Conservative' },
+    ],
+  },
+  {
+    vault: 'xAI Vault',
+    strategies: [
+      { name: 'AI compute stAI', apy: '12%', risk: 'Moderate' },
+    ],
+  },
+  {
+    vault: 'xPARS Vault',
+    strategies: [
+      { name: 'Pars staking stPARS', apy: '6%', risk: 'Conservative' },
+    ],
+  },
 ]
 
 const features = [
   {
-    title: '90% LTV E-Mode',
-    description: 'Maximum capital efficiency for correlated asset pairs. Borrow up to 90% of your collateral value.',
+    title: '90% LTV',
+    description: 'Maximum capital efficiency with correlated assets. Borrow up to 90% of your collateral value.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -76,58 +135,31 @@ const features = [
     ),
   },
   {
-    title: 'No Liquidation Fear',
-    description: 'Yield-based repayment means your collateral is protected. Sleep soundly knowing your position is safe.',
+    title: 'NFT Positions',
+    description: 'Each CDP is an NFT. Transferable, composable, and tradeable on any marketplace.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
       </svg>
     ),
   },
   {
-    title: 'Yield Auto-Repay',
-    description: 'Your source chain yield flows directly to debt repayment. Loans pay themselves off automatically.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Multi-Chain Collateral',
-    description: 'Deposit assets from Ethereum, Solana, Bitcoin, and more. True cross-chain capital efficiency.',
+    title: 'Multi-Chain',
+    description: '4 networks, 6 vault types. Lux, Zoo, Hanzo, and Pars — all with native x* tokens.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
       </svg>
     ),
   },
-]
-
-const yieldStrategies = [
   {
-    name: 'ETH Staking Yield',
-    source: 'Ethereum',
-    apy: '4-6%',
-    description: 'Native staking rewards from Ethereum validators flow to your debt.',
-  },
-  {
-    name: 'BTC Yield',
-    source: 'Bitcoin L2s',
-    apy: '2-5%',
-    description: 'Yield from Bitcoin DeFi protocols on Stacks, Lightning, and others.',
-  },
-  {
-    name: 'Stablecoin Yield',
-    source: 'Multiple Chains',
-    apy: '5-12%',
-    description: 'Lending yields from battle-tested protocols across chains.',
-  },
-  {
-    name: 'LUX Staking',
-    source: 'Lux Network',
-    apy: '8-15%',
-    description: 'Validator rewards and protocol incentives from Lux Network.',
+    title: 'Self-Repaying',
+    description: 'Yield automatically repays debt. No manual payments, no margin calls, no stress.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    ),
   },
 ]
 
@@ -142,13 +174,19 @@ const securityFeatures = [
   },
   {
     title: 'Open Source',
-    description: 'All contracts verified and publicly auditable.',
+    description: 'All contracts verified and publicly auditable on-chain.',
   },
   {
     title: 'Bug Bounty',
     description: '$500K bounty program for critical vulnerabilities.',
   },
 ]
+
+const riskColors: Record<string, string> = {
+  Conservative: 'text-emerald-400',
+  Moderate: 'text-amber-400',
+  Aggressive: 'text-red-400',
+}
 
 export default function Page() {
   return (
@@ -161,10 +199,11 @@ export default function Page() {
           </Link>
           <div className="hidden md:flex gap-8 text-sm text-muted-foreground">
             <Link href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</Link>
-            <Link href="#tokens" className="hover:text-foreground transition-colors">L* Tokens</Link>
+            <Link href="#tokens" className="hover:text-foreground transition-colors">x* Tokens</Link>
+            <Link href="#strategies" className="hover:text-foreground transition-colors">MYT Strategies</Link>
             <Link href="#features" className="hover:text-foreground transition-colors">Features</Link>
             <Link href="/bank" className="hover:text-foreground transition-colors">Bank</Link>
-            <Link href="https://docs.lux.network/finance" className="hover:text-foreground transition-colors">Docs</Link>
+            <Link href="https://docs.lux.network/liquid" className="hover:text-foreground transition-colors">Docs</Link>
           </div>
           <Link
             href="https://app.lux.finance"
@@ -178,16 +217,16 @@ export default function Page() {
       {/* Hero */}
       <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
         <p className="text-muted-foreground text-sm tracking-widest uppercase mb-4">
-          Liquid Protocol
+          Liquid Protocol V3
         </p>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-center mb-6">
-          LUX FINANCE
+          Self-Repaying Loans
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground text-center max-w-2xl mb-4">
-          Self-repaying loans. Borrow against yield.
+          Deposit collateral. Borrow x* tokens. Yield repays your debt.
         </p>
         <p className="text-base text-muted-foreground/80 text-center max-w-xl mb-12">
-          Deposit bridged collateral, borrow L* synthetic tokens, and let source chain yield automatically repay your debt.
+          Liquid Protocol V3 lets you borrow multiplied tokens (xETH, xUSD, xLUX, xZOO, xAI, xPARS) at 90% LTV. MYT strategies auto-allocate yield across protocols to repay your debt over time.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
@@ -197,10 +236,10 @@ export default function Page() {
             Launch App
           </Link>
           <Link
-            href="https://docs.lux.network/finance"
+            href="https://docs.lux.network/liquid"
             className="px-8 py-4 bg-card border border-border backdrop-blur-sm font-medium rounded-xl hover:bg-muted transition-colors"
           >
-            Read the Docs
+            Read Docs
           </Link>
         </div>
       </section>
@@ -224,7 +263,7 @@ export default function Page() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How It Works</h2>
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            Four steps to unlock liquidity without selling your assets.
+            Four steps to self-repaying loans. No liquidation fear, no manual payments.
           </p>
           <div className="grid md:grid-cols-4 gap-6">
             {steps.map((item, index) => (
@@ -245,113 +284,88 @@ export default function Page() {
           </div>
           <div className="mt-12 p-6 bg-muted/30 border border-border rounded-xl max-w-3xl mx-auto">
             <p className="text-center text-muted-foreground">
-              <span className="font-medium text-foreground">Example:</span> Bridge ETH from Ethereum, deposit as collateral, borrow LETH at 90% LTV, use LETH across DeFi while ETH staking yield auto-repays your loan.
+              <span className="font-medium text-foreground">Example:</span> Deposit wstETH, borrow xETH at 90% LTV, use xETH across DeFi while Lido/EigenLayer yield auto-repays your loan. Convert xETH back to ETH via the 90-day transmuter.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Liquid Tokens */}
+      {/* x* Tokens */}
       <section id="tokens" className="py-24 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">L* Liquid Tokens</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">x* Multiplied Tokens</h2>
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            12 liquid synthetic tokens at launch. Borrow L* tokens against your bridged collateral.
+            6 multiplied debt tokens across 4 networks. The &quot;x&quot; stands for multiplied &mdash; borrow against yield-bearing collateral at 90% LTV.
           </p>
-
-          {/* Native Lux */}
-          <div className="mb-8">
-            <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">Native Lux</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {liquidTokens.filter(t => t.category === 'Native Lux').map((token) => (
-                <div
-                  key={token.symbol}
-                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-4 hover:border-muted-foreground/50 transition-colors"
-                >
-                  <p className="text-lg font-bold">{token.symbol}</p>
-                  <p className="text-sm text-muted-foreground">{token.name}</p>
-                </div>
-              ))}
+          {tokenGroups.map((group) => (
+            <div key={group.network} className="mb-8">
+              <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">{group.network}</h3>
+              <div className={`grid gap-4 ${group.tokens.length === 1 ? 'grid-cols-1 max-w-xs' : group.tokens.length === 2 ? 'grid-cols-2 max-w-lg' : 'grid-cols-3'}`}>
+                {group.tokens.map((token) => (
+                  <div
+                    key={token.symbol}
+                    className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-4 hover:border-muted-foreground/50 transition-colors"
+                  >
+                    <p className="text-lg font-bold">{token.symbol}</p>
+                    <p className="text-sm text-muted-foreground">{token.name}</p>
+                    <p className="text-xs text-muted-foreground/60 mt-1">Underlying: {token.underlying}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Major L1s */}
-          <div className="mb-8">
-            <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">Major L1s</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {liquidTokens.filter(t => t.category === 'Major L1s').map((token) => (
-                <div
-                  key={token.symbol}
-                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-4 hover:border-muted-foreground/50 transition-colors"
-                >
-                  <p className="text-lg font-bold">{token.symbol}</p>
-                  <p className="text-sm text-muted-foreground">{token.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Stablecoins */}
-          <div>
-            <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">Stablecoins</h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
-              {liquidTokens.filter(t => t.category === 'Stablecoins').map((token) => (
-                <div
-                  key={token.symbol}
-                  className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-4 hover:border-muted-foreground/50 transition-colors"
-                >
-                  <p className="text-lg font-bold">{token.symbol}</p>
-                  <p className="text-sm text-muted-foreground">{token.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Features */}
-      <section id="features" className="py-24 px-6">
+      {/* MYT Strategies */}
+      <section id="strategies" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Key Features</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">MYT Strategies</h2>
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            Capital efficient borrowing with minimal liquidation risk.
+            Mix-Yield Token strategies auto-allocate collateral yield across battle-tested protocols. Yield flows directly to debt repayment.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {mytStrategies.map((vault) => (
               <div
-                key={feature.title}
-                className="bg-card border border-border backdrop-blur-sm rounded-xl p-6 hover:border-muted-foreground/50 transition-colors"
+                key={vault.vault}
+                className="bg-card border border-border backdrop-blur-sm rounded-xl p-6"
               >
-                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 text-foreground">
-                  {feature.icon}
+                <h3 className="text-lg font-bold mb-4">{vault.vault}</h3>
+                <div className="space-y-3">
+                  {vault.strategies.map((strategy) => (
+                    <div key={strategy.name} className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-foreground">{strategy.name}</p>
+                        <p className={`text-xs ${riskColors[strategy.risk]}`}>{strategy.risk}</p>
+                      </div>
+                      <span className="text-sm font-bold text-foreground">{strategy.apy}</span>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Yield Strategies */}
-      <section id="yield" className="py-24 px-6 bg-card">
+      {/* Features */}
+      <section id="features" className="py-24 px-6 bg-card">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Yield Strategies</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Key Features</h2>
           <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-            Source chain yield flows directly to debt repayment.
+            Capital-efficient borrowing. NFT-based positions. Multi-chain yield.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {yieldStrategies.map((strategy) => (
+            {features.map((feature) => (
               <div
-                key={strategy.name}
-                className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-6"
+                key={feature.title}
+                className="bg-muted/50 border border-border backdrop-blur-sm rounded-xl p-6 hover:border-muted-foreground/50 transition-colors"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs text-muted-foreground px-2 py-1 bg-muted rounded">{strategy.source}</span>
-                  <span className="text-lg font-bold text-foreground">{strategy.apy}</span>
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 text-foreground">
+                  {feature.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2">{strategy.name}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{strategy.description}</p>
+                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -387,9 +401,9 @@ export default function Page() {
       {/* CTA */}
       <section className="py-24 px-6 bg-card">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Earning</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Borrowing Against Your Yield</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Deposit your bridged collateral. Borrow L* tokens. Let yield auto-repay your debt.
+            Deposit yield-bearing collateral. Borrow x* tokens at 90% LTV. Let MYT strategies auto-repay your debt.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
@@ -415,14 +429,14 @@ export default function Page() {
             <div>
               <h4 className="font-bold mb-4">LUX FINANCE</h4>
               <p className="text-muted-foreground text-sm">
-                Self-repaying loans powered by yield.
+                Self-repaying loans powered by MYT yield strategies.
               </p>
             </div>
             <div>
               <h4 className="font-bold mb-4">Protocol</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="https://app.lux.finance" className="hover:text-foreground transition-colors">App</Link></li>
-                <li><Link href="https://docs.lux.network/finance" className="hover:text-foreground transition-colors">Docs</Link></li>
+                <li><Link href="https://docs.lux.network/liquid" className="hover:text-foreground transition-colors">Docs</Link></li>
                 <li><Link href="https://github.com/luxfi/finance" className="hover:text-foreground transition-colors">GitHub</Link></li>
               </ul>
             </div>
